@@ -1,155 +1,46 @@
-// const playerX = document.querySelector(".x");
-// const xSymbols = document.querySelectorAll(".x span")
-// const oSymbols = document.querySelectorAll(".oval span")
-// const osymbolCenter = document.querySelector(".oval span span")
-// const playerO = document.querySelector(".oval");
-// const btnCpu = document.querySelector(".btn-one");
-// const btnPlayer = document.querySelector(".btn-two");
-// const restBtn = document.querySelector(".restart-btn")
-// const btn = document.querySelector(".btn")
-// const trn = document.querySelector(".turn")
-
-
-
-
-// playerX.addEventListener("click", function() {
-//   playerX.classList.add('active')
-//   playerO.classList.remove('active')
-//   if (playerX.classList.contains('active')){
-//     xSymbols.forEach(function(xSymbol){
-//       xSymbol.style.background = 'var(--dark-grey)'
-//     })
-//     oSymbols.forEach(function(oSymbol){
-//       oSymbol.style.background = ''
-//     })
-//   }
-// })
-
-// playerO.addEventListener("click", function() {
-//   playerO.classList.add('active')
-//   playerX.classList.remove('active')
-//   if (playerO.classList.contains('active')){
-//     oSymbols.forEach(function(oSymbol){
-//       oSymbol.style.background = 'var(--dark-grey)'
-//     })
-//     xSymbols.forEach(function(xSymbol){
-//       xSymbol.style.background = ''
-//     })
-//     osymbolCenter.style.background = 'var(--silver)'
-//   }
-// })
-
-
-// //this is next window after choose your place
-
-// const turnX = document.createElement('div')
-// turnX.classList.add("turnx")
-// btn.insertBefore(turnX, trn)
-
-// const turnO = document.createElement('div')
-// turnO.classList.add("turno")
-// btn.insertBefore(turnO, trn)
-
-// function itTurnX() {
-//   turnX.style.display = 'block';
-//   turnO.style.display = 'none';
-// }
-
-// function itTurnO() {
-//   turnX.style.display = 'none';
-//   turnO.style.display = 'block';
-// }
-
-// itTurnX()
-
-// const box = document.querySelectorAll(".box")
-
-// let xTurn = true
-
-
-
-// box.forEach(function(boxes) {
-//   boxes.addEventListener('click', handleClickDouble);
-// });
-
-// restBtn.addEventListener('click', function() {
-//   box.forEach(function(boxes) {
-//     boxes.innerHTML = ''; 
-//     boxes.addEventListener('click', handleClickDouble);
-//   });
-//   xTurn = true;
-// });
-
-// const winConditions = [
-//   //rows
-//   [0,1,2],
-//   [3,4,5],
-//   [6,7,8],
-//   //columns
-//   [0,3,6],
-//   [1,4,7],
-//   [2,5,8],
-//   //diagonals
-//   [0,4,8],
-//   [2,4,6]
-// ]
-
-// function checkWin() {
-//   // Loop through each win condition
-//   for (let i = 0; i < winConditions.length; i++) {
-//     const [a, b, c] = winConditions[i];
-//     const boxA = box[a];
-//     const boxB = box[b];
-//     const boxC = box[c];
-//     // Check if all three boxes have the same class (either "x" or "o")
-//     if (boxA.classList.contains("x") && boxB.classList.contains("x") && boxC.classList.contains("x")) {
-//       // "X" player wins
-//       console.log("X wins!");
-//       // Add code to display a message or perform other actions
-//       return true;
-//     } else if (boxA.classList.contains("o") && boxB.classList.contains("o") && boxC.classList.contains("o")) {
-//       // "O" player wins
-//       console.log("O wins!");
-//       // Add code to display a message or perform other actions
-//       return true;
-//     }
-//   }
-//   // No winning condition found
-//   return false;
-// }
-
-// function handleClickDouble() {
-//   const itX = document.createElement('div');
-//   itX.classList.add(xTurn ? 'x':'o');
-//   this.appendChild(itX); 
-//   xTurn = !xTurn;
-//   this.removeEventListener('click', handleClickDouble);
-//   if (checkWin()) {
-//     // Add code to handle end of game
-//     console.log("Game over!");
-//     return;
-//   }
-//   if(xTurn) {
-//     itTurnO()
-//   } else {
-//     itTurnX()
-//   }
-// }
-
-
-
-
-
+const boxes = document.querySelectorAll(".boxs")
+const turn = document.querySelector(".turn")
+const rst = document.querySelector(".restart-btn")
 const playerX = document.querySelector(".x");
 const xSymbols = document.querySelectorAll(".x span");
 const oSymbols = document.querySelectorAll(".oval span");
 const osymbolCenter = document.querySelector(".oval span span");
 const playerO = document.querySelector(".oval");
-const btnCpu = document.querySelector(".btn-one");
-const btnPlayer = document.querySelector(".btn-two");
-const restBtn = document.querySelector(".restart-btn");
+const playone = document.querySelector(".playone");
+const tie = document.querySelector(".tie");
+const playtwo = document.querySelector(".playtwo");
 const btn = document.querySelector(".btn");
 const trn = document.querySelector(".turn");
+const playerGame = document.querySelector(".game")
+const playerContainer = document.querySelector(".container")
+const btncpu = document.querySelector(".btn-one")
+const btnplayer = document.querySelector(".btn-two")
+const quit = document.querySelector(".buttons .btn-cancel")
+const next = document.querySelector(".buttons .btn-next")
+const cancelGame = document.querySelector(".buttons-2 .btn-cancel")
+const clearGame = document.querySelector(".buttons-2 .btn-next")
+
+
+const turnX = document.createElement('div');
+turnX.classList.add("turnx");
+btn.insertBefore(turnX, trn);
+
+const turnO = document.createElement('div');
+turnO.classList.add("turno");
+btn.insertBefore(turnO, trn);
+
+function showTurnX() {
+  turnX.style.display = 'block';
+  turnO.style.display = 'none';
+}
+
+function showTurnO() {
+  turnX.style.display = 'none';
+  turnO.style.display = 'block';
+}
+
+
+
 
 playerX.addEventListener("click", function() {
   playerX.classList.add('active');
@@ -174,42 +65,33 @@ playerO.addEventListener("click", function() {
   osymbolCenter.style.background = 'var(--silver)';
 });
 
-const turnX = document.createElement('div');
-turnX.classList.add("turnx");
-btn.insertBefore(turnX, trn);
 
-const turnO = document.createElement('div');
-turnO.classList.add("turno");
-btn.insertBefore(turnO, trn);
 
-function showTurnX() {
-  turnX.style.display = 'block';
-  turnO.style.display = 'none';
+showTurnX()
+
+
+btnplayer.addEventListener('click', showPlayerGame)
+quit.addEventListener('click', quitgame)
+rst.addEventListener('click', restartWholeGame)
+
+
+
+function showPlayerGame() {
+  playerContainer.style.display = "none"
+  playerGame.style.display = "flex"
+  initializeGame()
 }
 
-function showTurnO() {
-  turnX.style.display = 'none';
-  turnO.style.display = 'block';
+
+
+function quitgame() {
+  playerContainer.style.display = "flex"
+  playerGame.style.display = "none"
+  document.querySelector(".banner").style.display = "none"
+  restartGame()
 }
 
-showTurnX();
 
-const boxes = document.querySelectorAll(".box");
-
-let xTurn = true;
-
-boxes.forEach(function(box) {
-  box.addEventListener('click', handleClick);
-});
-
-restBtn.addEventListener('click', function() {
-  boxes.forEach(function(box) {
-    box.innerHTML = '';
-    box.addEventListener('click', handleClick);
-  });
-  xTurn = true;
-  showTurnX();
-});
 
 const winConditions = [
   //rows
@@ -223,42 +105,167 @@ const winConditions = [
   //diagonals
   [0,4,8],
   [2,4,6]
-];
+]
 
-const conditions = ["","","","","","","","",""]
+let options = ["","","","","","","","",""]
+let xTurn = true
+let currentPlayer = "X"
+let running = false
 
 
+function initializeGame() {
+  boxes.forEach(box => box.addEventListener('click', cellClicked))
+  next.addEventListener('click', () => {
+  document.querySelector(".banner").style.display = "none"
+  restartGame()
+  })
+  running = true
+}
 
-function checkWin() {
+function cellClicked() {
+  const cellIndex = this.getAttribute("cellIndex");
+  currentPlayer = xTurn ? "X" : "O";
+
+  if (currentPlayer == "X") {
+    showTurnX()
+  } else if (currentPlayer == "O") {
+    showTurnO()
+  }
+
+  if (options[cellIndex] != '' || !running) {
+    return
+  }
+  updateCell(this, cellIndex)
+  handlerClick(this)
+  checkWinner()
+}
+
+function updateCell(box, index) {
+  options[index] = currentPlayer
+}
+
+let countP1 = 0
+let countTie = 0
+let countP2 = 0
+
+function checkWinner() {
+  roundWon = false 
   for (let i = 0; i < winConditions.length; i++) {
-    const [a, b, c] = winConditions[i];
-    if (conditions[a] && conditions[a] === conditions[b] && conditions[b] === conditions[c] && conditions[c]) {
-      console.log('works')
-      return true;
+    const condition = winConditions[i]
+    const boxesA = options[condition[0]]
+    const boxesB = options[condition[1]]
+    const boxesC = options[condition[2]]
+    
+    if (boxesA == "" || boxesB == "" || boxesC == "") {
+      continue;
+    } 
+    
+    if (boxesA ==  boxesB && boxesB == boxesC) {
+      roundWon = true
+      break;
     }
-    console.log([a,b,c])
   }
-  return false;
+  if (roundWon) {
+    if (currentPlayer == "X") {
+      countP1++
+      playone.textContent = countP1
+      xwins()
+    } else if (currentPlayer == "O") {
+      countP2++
+      playtwo.textContent = countP2
+      owins()
+    }
+    boxes.forEach(box => box.removeEventListener('click', cellClicked))
+  } else if (!options.includes("")) {
+    countTie++
+    tie.textContent = countTie
+    running = false
+    tied()
+  }
 }
 
-function handleClick() {
+function handlerClick(box) {
   const symbol = document.createElement('div');
-  symbol.classList.add(xTurn ? 'x':'o');
-  this.appendChild(symbol); 
-  xTurn = !xTurn;
-  this.removeEventListener('click', handleClick);
-  if (checkWin()) {
-    boxes.forEach(function(box) {
-      box.removeEventListener('click', handleClick);
-      conditions.push(box)
-    });
-    console.log("Game over!");
-    return;
-  }
-  if(xTurn) {
-    showTurnO();
-  } else {
-    showTurnX();
-  }
+  symbol.classList.add(xTurn ? 'xtr':'otr');
+  box.appendChild(symbol)
+  xTurn = !xTurn;   
 }
 
+function restartGame() {
+  currentPlayer = "X"
+  options = ["","","","","","","","",""]
+  boxes.forEach(box => box.textContent = "")
+  boxes.forEach(box => box.addEventListener('click', cellClicked))
+  xTurn = true
+}
+  
+
+
+function xwins() {
+  document.querySelector(".banner").style.display = "flex"
+  document.querySelector(".banner .info h1").textContent = "YOU WON!"
+  document.querySelector(".banner .winner .takeround").style.display = "flex"
+  document.querySelector(".banner .winner .takeround-two").style.display = "none"
+  document.querySelector(".banner .winner h1").style.color = "var(--light-blue)"
+  buttonChanger()
+}
+
+function owins() {
+  document.querySelector(".banner").style.display = "flex"
+  document.querySelector(".banner .info h1").textContent = "OH NO, YOU LOSE!"
+  document.querySelector(".banner .winner .takeround").style.display = "none"
+  document.querySelector(".banner .winner .takeround-two").style.display = "flex"
+  document.querySelector(".banner .winner h1").style.color = "var(--light-yellow)"
+  buttonChanger()
+}
+
+function tied() {
+  document.querySelector(".banner").style.display = "flex"
+  document.querySelector(".banner .info h1").textContent = ""
+  document.querySelector(".banner .winner .takeround").style.display = "none"
+  document.querySelector(".banner .winner .takeround-two").style.display = "none"
+  document.querySelector(".banner .winner h1").textContent = "ROUND TIED"
+  document.querySelector(".banner .winner h1").style.color = "var(--silver)"
+  buttonChanger()
+}
+
+
+function restartWholeGame() {
+  document.querySelector(".banner").style.display = "flex"
+  document.querySelector(".banner .info h1").textContent = ""
+  document.querySelector(".banner .winner .takeround").style.display = "none"
+  document.querySelector(".banner .winner .takeround-two").style.display = "none"
+  document.querySelector(".banner .winner h1").textContent = "RESTART GAME?"
+  document.querySelector(".banner .winner h1").style.color = "var(--silver)"
+  quit.style.display = 'none'
+  next.style.display = "none"
+  cancelGame.style.display = 'flex'
+  clearGame.style.display = "flex"
+  document.querySelector(".banner .buttons-2 .btn-cancel h1").textContent = "NO, CANCEL"
+  document.querySelector(".banner .buttons-2 .btn-next h1").textContent = "YES, RESTART"
+
+  cancelGame.addEventListener('click', () => {
+  document.querySelector(".banner").style.display = "none"
+
+  restartGame()
+  })
+
+  clearGame.addEventListener('click', () => {
+    document.querySelector(".banner").style.display = "none"
+    countP1 = 0
+    countTie = 0
+    countP2 = 0
+    playone.textContent = countP1
+    playtwo.textContent = countP2
+    tie.textContent = countTie
+    })
+    restartGame()
+}
+
+
+function buttonChanger() {
+  clearGame.style.display = "none"
+  cancelGame.style.display = 'none'
+  quit.style.display = 'flex'
+  next.style.display = "flex"
+}
